@@ -41,11 +41,11 @@ public class OtpController {
 	    try {
 	        MimeMessage mimeMessage = mailSender.createMimeMessage();
 	        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
-	        
-	        helper.setFrom("deepak.bisht20010904@gmail.com");
+
+			helper.setFrom(SENDER EMAIL);
 	        helper.setTo(email);
 	        helper.setSubject("Forgot Password - OTP Verification");
-	        
+
 	        String htmlContent = "<!DOCTYPE html>" +
 	                "<html lang=\"en\">" +
 	                "<head>" +
@@ -77,17 +77,17 @@ public class OtpController {
 	                "</table>" +
 	                "</body>" +
 	                "</html>";
-	        
+
 	        helper.setText(htmlContent, true); // Set the HTML content and specify it as HTML
-	        
+
 	        mailSender.send(mimeMessage);
-	        
+
 	        return "OTP has been sent to your email";
 	    } catch (MailException | MessagingException e) {
 	        e.printStackTrace();
 	        return "Error occurred while sending OTP: " + e.getMessage();
 	    }
-	
+
 
 }
 }
