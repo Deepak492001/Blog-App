@@ -3,6 +3,7 @@ import React from "react";
 import linkedin from "../assets/linkedin.svg";
 import instagram from "../assets/instagram.svg";
 import { Link } from "react-router-dom";
+import { FaHeart } from "react-icons/fa";
 const Footer = () => {
   return (
     <>
@@ -142,7 +143,9 @@ const Footer = () => {
           </div>
         </footer>
         <div className="footer-copyright">
-          © 2021 - Present StudySync. All rights reserved.
+          Made with 	<FaHeart style={{color:"red"}} />  by Deepak Bisht
+          <br />
+          © 2023 - Present Blogger. All rights reserved.
         </div>
       </div>
 

@@ -33,8 +33,3 @@ Acknowledgments
 This project was developed as part of [mention any course or learning source if applicable].
 Thanks to [acknowledge any contributors or resources you used] for their valuable insights.
 Feel free to modify and expand upon this README template to provide more specific details, instructions, or any other relevant information about your blog project.
-
-
-
-
-
