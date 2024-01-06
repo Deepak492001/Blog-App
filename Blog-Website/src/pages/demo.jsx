@@ -1,6 +1,9 @@
+/* Navbar CSS */
+
 .header {
   box-shadow: 0 2px 10px #6a6969;
 }
+
 .header-content {
   max-width: 1280px;
   margin: 0 auto;
@@ -8,7 +11,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-    font-weight: bolder;
+  color: red;
+
+  text-transform: uppercase;
 }
 
 .logo {
@@ -18,13 +23,14 @@
   font-weight: bold;
   color: var(--text-color);
   text-decoration: none;
-  gap: 0.625rem;
+  gap: 0.4rem;
 }
 
 .logo-icon {
   height: 120px;
   width: auto;
 }
+
 .logo-text {
   font-size: 2rem;
   font-weight: bold;
@@ -32,7 +38,11 @@
 
 .nav {
   display: none;
-  gap: 1rem;
+  gap: 1.5rem;
+}
+
+.larger-icon {
+  font-size: 2em;
 }
 
 @media screen and (min-width: 768px) {
@@ -42,17 +52,22 @@
 }
 
 .nav-link {
-  color: black;
-  font-size: 1.125rem;
+  font-size: 1.6rem;
   font-weight: 600;
-  transform: color 0.1s;
+  transition: color 0.1s;
 }
 
+/* Change the hover color */
 .nav-link:hover {
-  color: red;
+  color: #ffa600 !important;
+  /* Use !important to ensure the hover color takes precedence */
 }
 
-.contact-button {
+/* Change the active link color */
+.nav-link:active {
+  color: orange;
+}
+.nav-button {
   display: none;
   border: none;
   border-radius: 0.375rem;
@@ -64,75 +79,50 @@
   font-weight: 600;
 }
 
-.contact-button:first-of-type {
-  margin-right: 5px;
-  /* Reduce the gap */
-}
-
-.contact-button:last-of-type {
-  margin-left: 5px;
-  /* Reduce the gap */
-}
-
 @media screen and (min-width: 768px) {
-  .contact-button {
+  .nav-button {
     display: block;
   }
 }
-
-
 @media screen and (max-width: 767px) {
-  .menu-button {
-    display: block;
-    /* Add styles for the hamburger menu icon */
-  }
-
   .nav {
-    z-index: 4;
     display: none;
-    /* Hide the nav by default */
+    z-index: 3;
     flex-direction: column;
     position: absolute;
-    top: 154px;
-    /* Adjust the top position as needed */
+    top: 70px;
     left: 0;
     width: 100%;
-    background-color:#fff;
-    transition: all 0.3s ease;
+    background-color: var(--burger-nav-background-color);
+    transition: all 0.6s ease;
+  }
+
+  .menu-button {
+    display: block;
+    border: none;
+    border-radius: 0.375rem;
+    background-color: var(--background-color);
+    font-size: 1rem;
+    padding: 0.5rem 0.9rem;
+    font-weight: 600;
   }
 
   .nav.active {
     display: flex;
-    /* Show the nav when active */
-  }
-
-  .nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .nav li {
-    margin-bottom: 6px;
-  }
-
-  .nav a {
-    color: #333;
-    text-decoration: none;
-    font-size: 18px;
-    /* Add other styles for links */
+    flex-direction: column;
+    align-items: center;
+    /* Other necessary styles */
   }
 }
-
-.contact-button:hover {
+.nav-button:hover {
   background-color: #5254f8;
 }
 
 .menu-button {
   display: none;
-  /* border: none; */
-  /* border-radius:/ 0.375rem; */
-  /* background-color: var(--background-color); */
+  border: none;
+  border-radius: 0.375rem;
+  background-color: var(--background-color);
   font-size: 1rem;
   padding: 0.5rem 0.9rem;
   font-weight: 600;
@@ -145,6 +135,6 @@
 }
 
 .menu-icon {
-  height: 1.3rem;
-  width: 1.3rem;
+  height: 1.5rem;
+  width: 1.5rem;
 }

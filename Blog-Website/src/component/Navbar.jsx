@@ -2,12 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { doLogout, isLoggedIn } from "../service/Authentication";
 import logo from "../assets/logo.svg";
-import "../CSS/Nav.css"
 import { GiHamburgerMenu } from "react-icons/gi";
-import { IoClose } from "react-icons/io5";
 import { Toaster } from "react-hot-toast";
 import { UserContext } from "../context/UserContext";
-
+import "../CSS/Nav.css";
+import { IoClose } from "react-icons/io5";
 const Navbar = () => {
   // const [LoggedIn, setLoggedIn] = useState(false);
 
@@ -31,6 +30,10 @@ const Navbar = () => {
       navigate("/");
     });
   }
+
+  const toggleNav = () => {
+    setShowNav(!showNav);
+  };
   return (
     <>
       {/* --------------------------------------------------------------------------------------------------- */}
@@ -43,7 +46,7 @@ const Navbar = () => {
         <header className="header-content">
           <Link to="/" className="logo">
             <img src={logo} alt="logoImage" className="logo-icon" />
-            <span className="logo-text">Blogify</span>
+            <span className="logo-text">StudySync</span>
           </Link>
 
           <nav className={`nav ${showNav ? "active" : ""}`}>
@@ -78,42 +81,22 @@ const Navbar = () => {
               </li> */}
               </>
             )}
-
-            {/* {currentUser.data !== undefined && (
-            <nav className="nav">
-              <a href="#home" className="nav-link">
-                Home
-              </a>
-              <a href="#features" className="nav-link">
-                Features
-              </a>
-              <a href="#pricing" className="nav-link">
-                Pricing
-              </a>
-              <a href="#blog" className="nav-link">
-                Blog
-              </a>
-              <a href="#about" className="nav-link">
-                About
-              </a>
-            </nav>
-          )} */}
           </nav>
 
           {LoggedIn ? (
             <Link to="/">
-              <button className="nav-button" onClick={logOutHandler}>
+              <button className="contact-button" onClick={logOutHandler}>
                 Logout
               </button>
             </Link>
           ) : (
             <>
               <Link to="/signin">
-                <button className="nav-button">Login</button>
+                <button className="contact-button">Login</button>
               </Link>
 
               <Link to="/signup">
-                <button className="nav-button">Sign up for free</button>
+                <button className="contact-button">Sign up for free</button>
               </Link>
             </>
           )}
@@ -122,18 +105,15 @@ const Navbar = () => {
           <button
             type="button"
             className="menu-button"
-            onClick={() => setShowNav(!showNav)} // Toggle nav visibility on button click
+            onClick={toggleNav} // Toggle nav visibility on button click
           >
-            {
-              !showNav ?    <GiHamburgerMenu className="larger-icon" /> :<IoClose className="larger-icon" />
-
-            }
-
+            {showNav ? (
+              <IoClose className="menu-icon" />
+            ) : (
+              <GiHamburgerMenu className="menu-icon" />
+            )}
           </button>
 
-          {/* <button href="#contact" className="contact-button">
-            Contact Us
-          </button> */}
         </header>
       </div>
     </>

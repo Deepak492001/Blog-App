@@ -1,6 +1,6 @@
 // SearchPost component
 import React, { useState } from "react";
-
+import "../CSS/SearchPost.css"
 
 const SearchPost = ({ setSearchQuery }) => {
   function onChangeHandler(event) {

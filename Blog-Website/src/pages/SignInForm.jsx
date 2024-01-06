@@ -48,7 +48,7 @@ const SignInForm = () => {
           <div className="row d-flex align-items-center justify-content-center h-100">
             <div className="col-md-8 col-lg-7 col-xl-6">
               <img
-                // src={geetika}
+                src={geetika}
                 loading="lazy"
                 style={{ width: "400px", height: "500px" }}
                 className="img-fluid"
@@ -108,32 +108,11 @@ const SignInForm = () => {
                   Reset
                 </button>
 
-                <div className="divider d-flex align-items-center my-4">
-                  <p className="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
-                </div>
-
-                <a
-                  className="btn btn-primary btn-lg btn-block"
-                  style={{ backgroundColor: "#3b5998" }}
-                  href="#!"
-                  role="button"
-                >
-                  <i className="fab fa-facebook-f me-2"></i>Continue with
-                  Facebook
-                </a>
-                <a
-                  className="btn btn-primary btn-lg btn-block"
-                  style={{ backgroundColor: "#55acee" }}
-                  href="#!"
-                  role="button"
-                >
-                  <i className="fab fa-twitter me-2"></i>Continue with Twitter
-                </a>
               </form>
             </div>
           </div>
         </div>
-        <Toaster position="top-center" reverseOrder={false} />
+        {/* <Toaster position="top-center" reverseOrder={false} /> */}
       </section>
     </>
   );

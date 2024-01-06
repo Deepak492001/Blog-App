@@ -9,6 +9,7 @@ import { getAllUserBookmarksPostIds } from "../service/ApiUserBookmark";
 import { UserContext } from "../context/UserContext";
 import toast from "react-hot-toast";
 import { UserBookmarkContext } from "../context/UserBookmarkContext";
+import NoPostMessages from "../component/NoPostMessages";
 
 const AllPosts = () => {
   // State variables initialization
@@ -20,7 +21,8 @@ const AllPosts = () => {
   const [page, setPage] = useState(1); // Pagination page
   const [hasMore, setHasMore] = useState(true); // Tracks if there are more posts to load
   const { currentUser } = useContext(UserContext);
-  const { userBookmarkPostIds, setUserBookmarkPostIds } = useContext(UserBookmarkContext);
+  const { userBookmarkPostIds, setUserBookmarkPostIds } =
+    useContext(UserBookmarkContext);
 
   // Fetch bookmarked postsIds
   async function fetchAllBookmarkedPostIds() {
@@ -105,18 +107,29 @@ const AllPosts = () => {
 
       <InfiniteScroll
         dataLength={filteredPosts.length}
-        endMessage={<p style={{ textAlign: "center" }}><b>Yay! You have seen it all</b></p>}
+        endMessage={
+          <p style={{ textAlign: "center" }}>
+            <b>Yay! You have seen it all</b>
+          </p>
+        }
         next={loadMorePosts}
         hasMore={hasMore}
         loader={<Loader />}
       >
-        {loading ? (
-          <Loader />
+        {posts.length > 0 ? (
+          loading ? (
+            <Loader />
+          ) : (
+            filteredPosts.map((post) => (
+              <PostCard key={post.postId} post={post} showButtons={false} />
+            ))
+          )
         ) : (
-          filteredPosts.map((post) => (
-            <PostCard key={post.postId} post={post} showButtons={false} />
-          ))
+          // Show a message when there are no bookmarked posts
+          <NoPostMessages />
         )}
+
+        {}
       </InfiniteScroll>
     </>
   );

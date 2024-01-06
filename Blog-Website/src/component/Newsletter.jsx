@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../CSS/Newsletter.css"
 import { Link } from "react-router-dom";
 import newsImage from "../assets/newsImage.svg";
 const Newsletter = () => {

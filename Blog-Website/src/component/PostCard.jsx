@@ -35,11 +35,8 @@ const PostCard = ({ post, deletePost, showButtons, bookMarkedPostIds }) => {
 
         {showButtons && (
           <div>
-            <Link
-              to={`/update-post-page/${post.postId}`}
-              className="update-button"
-            >
-              <MdSystemUpdateAlt className=" delete-button" />
+            <Link to={`/update-post-page/${post.postId}`}>
+              <MdSystemUpdateAlt className="update-button" />
             </Link>
 
             <Link>

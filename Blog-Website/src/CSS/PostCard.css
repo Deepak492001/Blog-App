@@ -1,114 +1,115 @@
 .card {
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 20px auto;
-    /* Updated margin */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: calc(100% - 40px);
-    /* Full screen width minus margins */
-    padding: 20px;
-    box-sizing: border-box;
-    /* Include padding in width calculation */
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px auto;
+  /* Updated margin */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: calc(100% - 40px);
+  /* Full screen width minus margins */
+  padding: 20px;
+  box-sizing: border-box;
+  /* Include padding in width calculation */
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .card-img-top {
-    width: 100%;
-    height: 200px;
-    /* Update the height as needed */
-    object-fit: contain;
+  width: 100%;
+  height: 200px;
+  /* Update the height as needed */
+  object-fit: contain;
 }
 
 .card-body {
-    padding: 20px;
+  padding: 20px;
 }
 
 .card-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 10px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .card-description {
-    color: #333;
-    margin-bottom: 15px;
+  color: #333;
+  margin-bottom: 15px;
 }
 
 .card-read-more {
-    color: #194a7a;
-    cursor: pointer;
-    font-weight: bolder;
-    display: block;
-    margin-bottom: 10px;
+  color: #194a7a;
+  cursor: pointer;
+  font-weight: bolder;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .card-text {
-    color: #777;
-    font-size: 0.9rem;
-    margin-bottom: 10px;
+  color: #777;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
 }
 
 .card-button {
-    background-color: #008585;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 8px 15px;
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
+  background-color: #008585;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
 .card-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
 }
 
 /* Additional styling for Update and Delete buttons */
 .update-button {
-    color: #369639;
-    /* Add other styles as needed */
+  color: #369639;
+  /* Add other styles as needed */
 }
 
 .delete-button {
-    color: #f44336;
-    /* Add other styles as needed */
+  color: #f44336;
+  /* Add other styles as needed */
 }
 
-.delete-button,
-.update-button {
-    font-size: 1.5em;
-}
+.update-button,
+.delete-button {
 
+    margin-top: 10px;
+    font-size: 1.8em;
+    /* Set the font size for both update and delete buttons */
+}
 /* Rest of your existing styles */
 .card-button:hover {
-    background-color: #194a7a;
-
+  background-color: #194a7a;
 }
 
 .card-buttons {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 /* Responsive Styling */
 @media screen and (min-width: 1024px) {
-    .card {
-        width: calc(50% - 40px);
-        /* Half of the screen width minus margins */
-    }
+  .card {
+    width: calc(50% - 40px);
+    /* Half of the screen width minus margins */
+  }
 }
 
 @media screen and (max-width: 768px) {
-    .card {
-        width: calc(100% - 40px);
-        /* Full screen width minus margins */
-    }
+  .card {
+    width: calc(100% - 40px);
+    /* Full screen width minus margins */
+  }
 }

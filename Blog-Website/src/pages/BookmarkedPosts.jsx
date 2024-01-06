@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "../CSS/NoPostMessage.css"
 import sorry from "../assets/sorry.png";
 import PostCard from "../component/PostCard";
 import { useParams } from "react-router-dom";
@@ -7,6 +8,7 @@ import {
   getAllUserBookmarks,
 } from "../service/ApiUserBookmark";
 import { updateByPostId } from "../service/ApiPost";
+import NoPostMessages from "../component/NoPostMessages";
 
 const BookmarkedPosts = () => {
   const [posts, setPosts] = useState([]);
@@ -52,14 +54,7 @@ const BookmarkedPosts = () => {
         ))
       ) : (
         // Show a message when there are no bookmarked posts
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <h1>Sorry, No Posts Available</h1>
-          <img
-            style={{ width: "180px", height: "200px" }}
-            src={sorry}
-            alt="img"
-          />
-        </div>
+     <NoPostMessages/>
       )}
     </>
   );

@@ -1,7 +1,7 @@
 // Filter component
 import React, { useEffect, useState } from "react";
 import { getAllCategories } from "../service/ApiCategory";
-
+import "../CSS/Filter.css"
 
 const Filter = ({ setCategory }) => {
   const [filters, setFilters] = useState([]);

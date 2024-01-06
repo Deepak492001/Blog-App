@@ -1,40 +1,17 @@
 import React from "react";
 import "../CSS/Footer.css"
-import linkedin from "../assets/linkedin.svg";
-import instagram from "../assets/instagram.svg";
+
 import { Link } from "react-router-dom";
-import { FaHeart } from "react-icons/fa";
+import { FaHeart, FaLinkedinIn, FaMicrosoft } from "react-icons/fa";
 import logo from "../assets/logo.svg"
+import { FaTwitter,FaInstagram } from "react-icons/fa";
 const Footer = () => {
   return (
     <>
       <div className="footer-container">
         <footer className="footer">
           <div className="footer-top">
-            <div className="comp-logo">
-              <Link className="logo-link" href="#">
-                 <img src={logo} alt="logoImage" className="logo-icon" />
-                Blogify
-              </Link>
-            </div>
-            <p className="filler-text">
-              Seamless Learning for Brighter Futures.
-            </p>
-            <div className="social">
-              <Link className="social-link" href="#">
-                <img src={instagram} className="social-icon" />
-              </Link>
-              <Link className="social-link">
-                <img src={linkedin} className="social-icon" />
-              </Link>
-              <Link className="social-link">
-                <img src="./images/Microsoft.svg" className="social-icon" />
-              </Link>
-              <Link className="social-link">
-                <img src="./images/twitter.svg" className="social-icon" />
-              </Link>
-            </div>
-          </div>
+         
 
           <div className="footer-grid">
             {/* <!-- column 1 --> */}
@@ -140,6 +117,27 @@ const Footer = () => {
                   </Link>
                 </li>
               </ul>
+            </div>
+            </div>
+              <div className="social">
+              <Link className="social-link" href="#">
+                  <FaInstagram className="social-icon instagram" />
+
+              </Link>
+              <Link className="social-link">
+                <FaLinkedinIn className="social-icon linkedin" />
+
+
+              </Link>
+              <Link className="social-link">
+                  <FaMicrosoft className="social-icon microsoft" />
+
+              </Link>
+              <Link className="social-link">
+                <FaTwitter className="social-icon twitter" />
+
+
+              </Link>
             </div>
           </div>
         </footer>

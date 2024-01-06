@@ -1,4 +1,5 @@
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import "../CSS/NoPostMessage.css"
 import {
   deletePostById,
   getPostByUser,
@@ -8,6 +9,7 @@ import {
 import sorry from "../assets/sorry.png";
 import PostCard from "../component/PostCard";
 import { useParams } from "react-router-dom";
+import NoPostMessages from "../component/NoPostMessages";
 
 const MyPosts = () => {
   const [posts, setPosts] = useState([]);
@@ -41,14 +43,7 @@ const MyPosts = () => {
           />
         ))
       ) : (
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <h1>Sorry No Post Available</h1>
-          <img
-            style={{ width: "180px", height: "200px" }}
-            src={sorry}
-            alt="img"
-          />
-        </div>
+        <NoPostMessages/>
       )}
     </>
   );

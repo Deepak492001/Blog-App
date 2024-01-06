@@ -21,7 +21,7 @@
 }
 
 /* Styles for the company logo */
-.logo-link {
+/* .logo-link {
   text-decoration: none;
   color: #333;
   display: flex;
@@ -32,7 +32,7 @@
   width: 30px;
   height: 30px;
   margin-right: 10px;
-}
+} */
 
 /* Styles for the social icons */
 .social {
@@ -46,8 +46,32 @@
 .social-icon {
   width: 30px;
   height: 30px;
+  /* Add specific colors to each social icon */
 }
 
+/* LinkedIn icon color */
+.linkedin {
+  fill: #0077b5;
+  /* Replace with your desired color */
+}
+
+/* Instagram icon color */
+.instagram{
+  fill: #e4405f;
+  /* Replace with your desired color */
+}
+
+/* Microsoft icon color */
+.microsoft {
+  fill: #00a1f1;
+  /* Replace with your desired color */
+}
+
+/* Twitter icon color */
+.twitter {
+  fill: #1da1f2;
+  /* Replace with your desired color */
+}
 /* Styles for the footer grid */
 .footer-grid {
   display: grid;
@@ -112,4 +136,30 @@
     width: 90%;
     margin: 0 auto;
   }
+}
+
+
+.logo-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.28rem;
+  font-weight: bold;
+  color: black;
+}
+
+.social-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.filler-text {
+  font-size: 1rem;
+  color: #777;
+}
+
+.social {
+  display: flex;
+  gap: 0.8rem;
 }
