@@ -1,0 +1,115 @@
+/* Footer.css */
+
+/* Styles for the footer container */
+.footer-container {
+  background-color: #f8f9fa;
+  padding: 40px 20px;
+  font-family: "Allura", cursive;
+  color: #333;
+  /* font-family: 'Allura', cursive;
+        font-family: 'Poppins', sans-serif;
+        font-family: 'Roboto', sans-serif; */
+}
+
+/* Styles for the top section of the footer */
+.footer-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Styles for the company logo */
+.logo-link {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.logo-svg {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+/* Styles for the social icons */
+.social {
+  margin-top: 20px;
+}
+
+.social-link {
+  margin-right: 10px;
+}
+
+.social-icon {
+  width: 30px;
+  height: 30px;
+}
+
+/* Styles for the footer grid */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* Styles for each column in the footer grid */
+.footer-grid-column {
+  color: #333;
+}
+
+.footer-grid-heading {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.footer-links-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: #777;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #000;
+}
+
+/* Styles for the copyright section */
+.footer-copyright {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 30px;
+}
+
+@media screen and (min-width: 1024px) {
+  .footer-container {
+    width: 100vw;
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);
+    padding-left: calc((100% - 80%) / 2);
+    padding-right: calc((100% - 80%) / 2);
+    max-width: 100%;
+  }
+}
+
+/* Additional styles for smaller screens */
+@media screen and (max-width: 850px) {
+  /* Adjustments for smaller screens */
+  .footer-grid {
+    width: 90%;
+    margin: 0 auto;
+  }
+}

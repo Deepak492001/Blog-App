@@ -1,0 +1,57 @@
+.post-container {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.post-content {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+
+.bookmark-icon {
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.separator {
+    border-top: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.post-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.post-body {
+    margin-top: 10px;
+}
+
+.post-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.post-date {
+    font-style: italic;
+    color: #888;
+}
+
+.bookmark-icon {
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+
+/* Add your desired styles for form inputs and buttons */

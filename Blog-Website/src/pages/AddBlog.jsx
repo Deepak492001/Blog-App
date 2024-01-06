@@ -4,16 +4,19 @@ import { toast, Toaster } from "react-hot-toast";
 import JoditEditor from "jodit-react";
 import { getAllCategories } from "../service/ApiCategory";
 import { UserContext } from "../context/UserContext";
-
+import "../CSS/AddPost.css";
 const AddPost = () => {
   const editor = useRef(null);
   const [postContent, setContent] = useState("");
   const [categories, setCategories] = useState([]);
 
-  const config = useMemo(() => ({
-    readonly: false,
-    placeholder: "Start typing...",
-  }), []);
+  const config = useMemo(
+    () => ({
+      readonly: false,
+      placeholder: "Start typing...",
+    }),
+    []
+  );
 
   const { currentUser } = useContext(UserContext);
   const [post, setPost] = useState({
@@ -50,31 +53,28 @@ const AddPost = () => {
 
   function onChangeHandler(event) {
     const { name, value } = event.target;
-    setPost(prevPost => ({ ...prevPost, [name]: value }));
+    setPost((prevPost) => ({ ...prevPost, [name]: value }));
   }
 
   return (
-    <>
-      <form onSubmit={addPostHandler}>
-        <div className="row mb-4">
-          <div className="col">
-            <div data-mdb-input-init className="form-outline">
-              <input
-                type="text"
-                id="postTitle"
-                className="form-control"
-                onChange={onChangeHandler}
-                name="postTitle"
-                required
-                value={post.postTitle}
-              />
-              <label className="form-label" htmlFor="postTitle">
-                Title
-              </label>
-            </div>
+    <div className="add-post-container">
+      <form onSubmit={addPostHandler} className="post-form">
+        <div className="form-row">
+          <div className="form-group">
+            <label htmlFor="postTitle">Title</label>
+            <input
+              type="text"
+              id="postTitle"
+              className="form-control"
+              onChange={onChangeHandler}
+              name="postTitle"
+              required
+              value={post.postTitle}
+            />
           </div>
 
-          <div data-mdb-input-init className="form-outline mb-4">
+          <div className="form-group">
+            <label htmlFor="postCategory">Category</label>
             <select
               required
               className="select"
@@ -86,7 +86,7 @@ const AddPost = () => {
               <option disabled value="">
                 Select an option
               </option>
-              {categories.map(postCategory => (
+              {categories.map((postCategory) => (
                 <option
                   key={postCategory.categoryId}
                   value={postCategory.categoryName}
@@ -95,43 +95,32 @@ const AddPost = () => {
                 </option>
               ))}
             </select>
-
-            <label className="form-label" htmlFor="postCategory">
-              Category
-            </label>
-          </div>
-
-          <div className="col">
-            <div data-mdb-input-init className="form-outline">
-              <JoditEditor
-                ref={editor}
-                value={post.postContent}
-                config={config}
-                onChange={newContent => {
-                  setPost(prevPost => ({ ...prevPost, postContent: newContent }));
-                  setContent(newContent);
-                }}
-              />
-
-              <label className="form-label" htmlFor="postContent">
-                Content
-              </label>
-            </div>
           </div>
         </div>
 
-        <button
-          data-mdb-ripple-init
-          type="submit"
-          className="btn btn-primary btn-block mb-4"
-        >
-          Add Post
-        </button>
+        <div className="form-group">
+          <label htmlFor="postContent">Content</label>
+          <JoditEditor
+            ref={editor}
+            value={post.postContent}
+            config={config}
+            onChange={(newContent) => {
+              setPost((prevPost) => ({ ...prevPost, postContent: newContent }));
+              setContent(newContent);
+            }}
+          />
+        </div>
 
-        <button type="reset">Reset</button>
+        <div className="button-group">
+          <button type="submit" className="btn primary-btn">
+            Add Post
+          </button>
+          <button type="reset" className="btn secondary-btn">
+            Reset
+          </button>
+        </div>
       </form>
-     
-    </>
+    </div>
   );
 };
 

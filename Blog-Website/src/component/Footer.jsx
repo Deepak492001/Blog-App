@@ -1,9 +1,10 @@
 import React from "react";
-
+import "../CSS/Footer.css"
 import linkedin from "../assets/linkedin.svg";
 import instagram from "../assets/instagram.svg";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
+import logo from "../assets/logo.svg"
 const Footer = () => {
   return (
     <>
@@ -12,8 +13,8 @@ const Footer = () => {
           <div className="footer-top">
             <div className="comp-logo">
               <Link className="logo-link" href="#">
-                <img className="logo-svg" src="./images/StudySyn.svg" />
-                StudySync
+                 <img src={logo} alt="logoImage" className="logo-icon" />
+                Blogify
               </Link>
             </div>
             <p className="filler-text">
@@ -145,7 +146,7 @@ const Footer = () => {
         <div className="footer-copyright">
           Made with 	<FaHeart style={{color:"red"}} />  by Deepak Bisht
           <br />
-          © 2023 - Present Blogger. All rights reserved.
+          © 2023 - Present Blogify. All rights reserved.
         </div>
       </div>
 

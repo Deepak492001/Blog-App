@@ -1,5 +1,7 @@
+// Filter component
 import React, { useEffect, useState } from "react";
 import { getAllCategories } from "../service/ApiCategory";
+
 
 const Filter = ({ setCategory }) => {
   const [filters, setFilters] = useState([]);
@@ -8,28 +10,30 @@ const Filter = ({ setCategory }) => {
     const categoryData = await getAllCategories();
     setFilters(categoryData.data);
   }
+
   useEffect(() => {
     fetchAllCategories();
   }, []);
 
-  function filterHandler(categroyName) {
-    setCategory(categroyName);
+  function filterHandler(categoryName) {
+    setCategory(categoryName);
   }
 
   return (
-    <>
-      <button onClick={() => filterHandler("ALL")}>ALL</button>
-      {filters.map((filter) => {
-        return (
-          <button
-            key={filter.categoryId}
-            onClick={() => filterHandler(filter.categoryName)}
-          >
-            {filter.categoryName}{" "}
-          </button>
-        );
-      })}
-    </>
+    <div className="filter-container">
+      <button className="filter-button" onClick={() => filterHandler("ALL")}>
+        ALL
+      </button>
+      {filters.map((filter) => (
+        <button
+          key={filter.categoryId}
+          className="filter-button"
+          onClick={() => filterHandler(filter.categoryName)}
+        >
+          {filter.categoryName}
+        </button>
+      ))}
+    </div>
   );
 };
 

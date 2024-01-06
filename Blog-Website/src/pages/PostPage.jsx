@@ -2,7 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getPostByPostId } from "../service/ApiPost";
 import { toast, Toaster } from "react-hot-toast";
-import CommentCard from "../component/Comment/CommentCard.jsx";
+import CommentCard from "../component/CommentCard.jsx";
+import "../CSS/PostPage.css"
+import "../CSS/Comments.css"
+import geetika from "../assets/geetika.png"
 import { UserContext } from "../context/UserContext";
 import {
   addComment,
@@ -128,45 +131,47 @@ const PostPage = () => {
     } else {
       toast.error("Comment not added");
     }
+
   }
   return (
-    <>
-      <div className="card" style={{ width: "18rem" }}>
-        <img src="..." className="card-img-top" alt="..." />
-        <div className="card-body">
-          <h5 className="card-title"> {postData.postTitle}</h5>
-          <span
-            dangerouslySetInnerHTML={{ __html: postData.postContent }}
-          ></span>
-
-          <p className="card-text"> {postData.postLastmodified}</p>
+    <div className="post-container">
+      <div className="post-content">
+        <div className="post-card">
+          <img src={geetika} className="post-img" alt="Post Image" />
+          <div className="post-body">
+            <h5 className="post-title">{postData.postTitle}</h5>
+            <span dangerouslySetInnerHTML={{ __html: postData.postContent }} />
+            <p className="post-date">{postData.postLastmodified}</p>
+          </div>
+        </div>
+        <div className="bookmark-icon" onClick={bookmarkHandler}>
+          {bookmarked ? (
+            <IoBookmarks style={{ color: "blue" }} />
+          ) : (
+            <IoBookmarksOutline style={{ color: "blue" }} />
+          )}
         </div>
       </div>
-      <div></div>
-      {/*------------------------------------------- Bookmarks icons---------------------------------------- */}
 
-      <span onClick={bookmarkHandler}>
-        {bookmarked ? (
-          <IoBookmarks style={{ color: "blue" }} />
-        ) : (
-          <IoBookmarksOutline style={{ color: "blue" }} />
-        )}
-      </span>
+          <div className="separator"></div>
 
-      <h2>Comments </h2>
+  <div className="comments-section">
+        <h2 className="comments-heading">Comments</h2>
+        <div className="comments-list">
+          {/* Display comments */}
+          {allComments &&
+            allComments.map((comment) => (
+              <CommentCard
+                comment={comment}
+                setComment={setComment}
+                key={comment.commentId}
+                deleteComment={deleteComment}
+              />
+            ))}
+        </div>
+      </div>
 
-      {allComments &&
-        allComments.map((comment) => {
-          return (
-            <CommentCard
-              comment={comment}
-              key={comment.commentId}
-              deleteComment={deleteComment}
-            />
-          );
-        })}
-      <form onSubmit={onSubmitHandler}>
-        {/* <!-- Email input --> */}
+      <form className="comment-form" onSubmit={onSubmitHandler}>
         <div className="form-outline mb-4">
           <input
             type="text"
@@ -178,11 +183,10 @@ const PostPage = () => {
             required={true}
             placeholder="Add Comment"
           />
-
-          <button type="submit">Add Comment</button>
+          <button type="submit" className="comment-btn">Add Comment</button>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 
