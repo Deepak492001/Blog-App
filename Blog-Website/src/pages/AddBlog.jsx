@@ -7,6 +7,7 @@ import { UserContext } from "../context/UserContext";
 import "../CSS/AddPost.css";
 const AddPost = () => {
   const editor = useRef(null);
+  // check the use of this line for jodit editor
   const [postContent, setContent] = useState("");
   const [categories, setCategories] = useState([]);
 
@@ -24,6 +25,7 @@ const AddPost = () => {
     postContent: "",
     postCategory: "",
     postUser: currentUser.data,
+    postImage: null,
   });
 
   const fetchCategories = async () => {
@@ -41,20 +43,32 @@ const AddPost = () => {
 
   async function addPostHandler(event) {
     event.preventDefault();
+    console.log(post);
     const value = await addPost(post);
-
-    if (value !== undefined) toast.success("Post added successfully");
-    setPost({
-      postTitle: "",
-      postContent: "",
-      postCategory: "",
-    });
+    if (value !== undefined) {
+      toast.success("Post added successfully");
+      setPost({
+        postTitle: "",
+        postContent: "",
+        postCategory: "",
+        postImage: null,
+      });
+    } else toast.error("error occurred while adding post");
   }
+
 
   function onChangeHandler(event) {
-    const { name, value } = event.target;
+  const { name, value, files } = event.target;
+  if (name === "postImage") {
+    setPost((post) => ({
+      ...post,
+      postImage: files[0], // Set the postImage to the selected file
+    }));
+  } else {
     setPost((prevPost) => ({ ...prevPost, [name]: value }));
   }
+}
+
 
   return (
     <div className="add-post-container">
@@ -96,6 +110,19 @@ const AddPost = () => {
               ))}
             </select>
           </div>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="postImage">Image</label>
+          <input
+            type="file"
+            id="postImage"
+            className="form-control"
+            onChange={onChangeHandler}
+            name="postImage"
+            // required
+            // value={post.postImage} // Remove this line as the value for file inputs doesn't work this way
+          />
         </div>
 
         <div className="form-group">

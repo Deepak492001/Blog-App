@@ -34,6 +34,8 @@ const PostPage = () => {
   });
   const [bookmarked, setBookmarked] = useState(false);
 
+
+
   useEffect(() => {
     checkBookmarkedOrNot();
   }, [userBookmarkPostIds, postId]);
@@ -137,7 +139,16 @@ const PostPage = () => {
     <div className="post-container">
       <div className="post-content">
         <div className="post-card">
-          <img src={geetika} className="post-img" alt="Post Image" />
+
+  {postData.postImage && (
+        <img
+          src={`data:image/png;base64, ${postData.postImage}`} // Adjust the format according to the actual image type
+          alt="Post"
+          style={{ maxWidth: "100%", height: "auto" }}
+        />
+      )}
+
+
           <div className="post-body">
             <h5 className="post-title">{postData.postTitle}</h5>
             <span dangerouslySetInnerHTML={{ __html: postData.postContent }} />

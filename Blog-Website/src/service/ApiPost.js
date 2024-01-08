@@ -1,25 +1,36 @@
 import axios from "axios";
 const BASE_URL = "http://localhost:8080";
 
-// get all the posts
-
-// export const getAllPosts = async () => {
-//   try {
-//     return await axios.get(`${BASE_URL}/all-posts`);
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// };
-
-
-
-export const getAllPosts = async (page , size ) => {
+export const addPost = async (post) => {
   try {
-    const response = await axios.get(`${BASE_URL}/posts?page=${page}&size=${size}`);
+    const formData = new FormData();
+    formData.append("postTitle", post.postTitle);
+    formData.append("postContent", post.postContent);
+    formData.append("postCategory", post.postCategory);
+    formData.append("postUser", post.postUser);
+    formData.append("postImage", post.postImage);
+    const response = await axios.post(`${BASE_URL}/add-post`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
     return response.data;
   } catch (error) {
     console.log(error.message);
-    throw error; // Throw the error to handle it in the calling component
+    // throw error;
+  }
+};
+
+export const getAllPosts = async (page, size) => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/posts?page=${page}&size=${size}`
+    );
+
+    return response.data;
+  } catch (error) {
+    // Handle error cases
+    console.log(error.message);
   }
 };
 
@@ -35,7 +46,7 @@ export const getPostByPostId = async (postId) => {
 // get Post By use
 export const getPostByUser = async (user) => {
   try {
-    return await axios.get(`${BASE_URL}/post-by-user/${user}`)
+    return await axios.get(`${BASE_URL}/post-by-user/${user}`);
   } catch (error) {
     console.log(error.message);
   }
@@ -60,7 +71,6 @@ export const deletePostById = async (postId) => {
   }
 };
 
-
 // Add post
 // export const addPost = async (post) => {
 //     try {
@@ -70,22 +80,11 @@ export const deletePostById = async (postId) => {
 //     }
 // };
 
-export const addPost = async (post) => {
-  try {
-    const response = await axios.post(`${BASE_URL}/add-post`, post);
-    return response.data; // Assuming your backend returns data upon successful post creation
-  } catch (error) {
-    console.log(error.message);
-    throw error; // Propagate the error to handle it in the component
-  }
-};
-
-
 // get post Categories
 export const getCategories = async () => {
-    try {
-        return await axios.get(`${BASE_URL}/categories`);
-    } catch (error) {
-        console.log(error.message);
-    }
+  try {
+    return await axios.get(`${BASE_URL}/categories`);
+  } catch (error) {
+    console.log(error.message);
+  }
 };

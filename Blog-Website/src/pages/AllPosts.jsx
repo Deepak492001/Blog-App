@@ -53,6 +53,7 @@ const AllPosts = () => {
     setLoading(true);
     try {
       const allPosts = await getAllPosts(page, 1);
+      console.log(allPosts);
       setPosts(allPosts);
       setFilteredPosts(allPosts); // Set filtered posts initially to all posts
     } catch (error) {

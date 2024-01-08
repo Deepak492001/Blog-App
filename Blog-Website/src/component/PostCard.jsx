@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../CSS/PostCard.css";
 import { MdDelete, MdSystemUpdateAlt } from "react-icons/md";
 
 import geetika from "../assets/geetika.png";
 
+
+
+
+
 const PostCard = ({ post, deletePost, showButtons, bookMarkedPostIds }) => {
   const [readMore, setReadMore] = useState(false);
+ const [image, setImage] = useState(null);
+
 
   const description = readMore
     ? post.postContent
@@ -18,7 +24,15 @@ const PostCard = ({ post, deletePost, showButtons, bookMarkedPostIds }) => {
 
   return (
     <div className="card">
-      <img src={geetika} className="card-img-top" alt="post-img" />
+  
+        {post.postImage && (
+        <img
+          src={`data:image/png;base64, ${post.postImage}`} // Adjust the format according to the actual image type
+          alt="Post"
+          style={{ maxWidth: "100%", height: "auto" }}
+        />
+      )}
+
       <div className="card-body">
         <h5 className="card-title">{post.postTitle}</h5>
         <p

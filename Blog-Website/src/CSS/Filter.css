@@ -1,4 +1,5 @@
 .filter-container {
+    margin-top: 90px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
