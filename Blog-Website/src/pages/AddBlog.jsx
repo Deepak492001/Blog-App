@@ -121,7 +121,7 @@ const AddPost = () => {
             onChange={onChangeHandler}
             name="postImage"
             // required
-            // value={post.postImage} // Remove this line as the value for file inputs doesn't work this way
+
           />
         </div>
 

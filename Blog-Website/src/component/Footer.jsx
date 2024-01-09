@@ -3,7 +3,7 @@ import "../CSS/Footer.css"
 
 import { Link } from "react-router-dom";
 import { FaHeart, FaLinkedinIn, FaMicrosoft } from "react-icons/fa";
-import logo from "../assets/logo.svg"
+import logo from "../assets/logo.png"
 import { FaTwitter,FaInstagram } from "react-icons/fa";
 const Footer = () => {
   return (
@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="footer-container">
         <footer className="footer">
           <div className="footer-top">
-         
+
 
           <div className="footer-grid">
             {/* <!-- column 1 --> */}

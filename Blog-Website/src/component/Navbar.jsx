@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { doLogout, isLoggedIn } from "../service/Authentication";
-import logo from "../assets/logo.svg";
+import logo from "../assets/logo.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Toaster } from "react-hot-toast";
 import { UserContext } from "../context/UserContext";
@@ -83,26 +83,29 @@ const Navbar = () => {
             )}
           </nav>
 
-          {LoggedIn ? (
-            <Link to="/">
-              <button className="contact-button" onClick={logOutHandler}>
-                Logout
-              </button>
-            </Link>
-          ) : (
-            <>
-              <Link to="/signin">
-                <button className="contact-button">Login</button>
-              </Link>
-
-              <Link to="/signup">
-                <button className="contact-button">Sign up for free</button>
-              </Link>
-            </>
-          )}
+         {LoggedIn ? (
+  <Link to="/">
+    <button className="contact-button" onClick={logOutHandler}>
+      Logout
+    </button>
+  </Link>
+) : (
+  <ul className="contact-list">
+    <li>
+      <Link to="/signin">
+        <button className="contact-button">Login</button>
+      </Link>
+    </li>
+    <li>
+      <Link to="/signup">
+        <button className="contact-button">Sign up for free</button>
+      </Link>
+    </li>
+  </ul>
+)}
 
           {/* Hamburger menu button */}
-          <button
+          <span
             type="button"
             className="menu-button"
             onClick={toggleNav} // Toggle nav visibility on button click
@@ -112,7 +115,7 @@ const Navbar = () => {
             ) : (
               <GiHamburgerMenu className="menu-icon" />
             )}
-          </button>
+          </span>
 
         </header>
       </div>

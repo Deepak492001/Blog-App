@@ -127,12 +127,15 @@ const PostPage = () => {
         setAllComments([comment]);
       } else {
         setAllComments((comments) => [...comments, { ...comment }]);
-        setComment({ content: " " });
+
+
       }
       toast.success("Comment added successfully");
+
     } else {
       toast.error("Comment not added");
     }
+          setComment({ content: " " });
 
   }
   return (

@@ -39,6 +39,7 @@ select {
 
 .form-group textarea {
     min-height: 200px;
+    text-align: left;
     /* Increased height for content input */
 }
 
