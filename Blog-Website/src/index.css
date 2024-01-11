@@ -6,12 +6,16 @@
   --accent-color: #3f83f8;
   --text-color: #333333;
   --link-color: #2563eb;
-  --background-color: #ffffff;
+  --body-background-color: #ffffff;
   --light-gray: #f0f0f0;
   --gray: #808080;
   --dark-gray: #555;
   --burger-nav-background-color: rgba(252, 251, 251, 0.8);
-
+  --btn-background-color-primary: #008585;
+  --btn-background-color-secondary: #dc3545;
+  --btn-text-color: #fff;
+  --timestamp-color: #888;
+  --filter-button-color: #ff6e9c;
 }
 
 * {
@@ -24,10 +28,22 @@
 body {
   height: 100vh;
   text-align: center;
-  background-color: var(--background-color);
+  background-color: var(--body-background-color);
   padding: 0.1rem;
 }
 
+li {
+  list-style-type: none;
+}
+button {
+  transition: 0.4s ease;
+  color: var(--btn-text-color);
+  cursor: pointer;
+}
+button:hover {
+  scale: 1.05;
+}
 
-
-
+button:active {
+  scale: 0.95;
+}

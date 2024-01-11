@@ -56,19 +56,17 @@ const AddPost = () => {
     } else toast.error("error occurred while adding post");
   }
 
-
   function onChangeHandler(event) {
-  const { name, value, files } = event.target;
-  if (name === "postImage") {
-    setPost((post) => ({
-      ...post,
-      postImage: files[0], // Set the postImage to the selected file
-    }));
-  } else {
-    setPost((prevPost) => ({ ...prevPost, [name]: value }));
+    const { name, value, files } = event.target;
+    if (name === "postImage") {
+      setPost((post) => ({
+        ...post,
+        postImage: files[0], // Set the postImage to the selected file
+      }));
+    } else {
+      setPost((prevPost) => ({ ...prevPost, [name]: value }));
+    }
   }
-}
-
 
   return (
     <div className="add-post-container">
@@ -121,7 +119,6 @@ const AddPost = () => {
             onChange={onChangeHandler}
             name="postImage"
             // required
-
           />
         </div>
 
@@ -135,6 +132,9 @@ const AddPost = () => {
               setPost((prevPost) => ({ ...prevPost, postContent: newContent }));
               setContent(newContent);
             }}
+            style={{ textAlign: "left !important" }}
+
+            // className="jodit-editor-container" // Apply the custom class to the editor
           />
         </div>
 

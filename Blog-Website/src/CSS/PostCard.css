@@ -40,7 +40,7 @@
 }
 
 .card-read-more {
-  color: #194a7a;
+  color: var(--link-color);
   cursor: pointer;
   font-weight: bolder;
   display: block;
@@ -54,8 +54,7 @@
 }
 
 .card-button {
-  background-color: #008585;
-  color: #fff;
+  background-color: var(--btn-background-color-primary);
   border: none;
   border-radius: 5px;
   padding: 8px 15px;
@@ -89,10 +88,7 @@
     font-size: 1.8em;
     /* Set the font size for both update and delete buttons */
 }
-/* Rest of your existing styles */
-.card-button:hover {
-  background-color: #194a7a;
-}
+
 
 .card-buttons {
   display: flex;

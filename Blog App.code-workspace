@@ -1,6 +1,11 @@
 {
 	"folders": [
 		{
+			"name": "Blog App Backend",
+			"path": "../Blog App Backend"
+		},
+		{
+			"name": "Blog App",
 			"path": "."
 		}
 	],

@@ -5,7 +5,7 @@
 }
 
 .comment-card {
-    background-color: #fff;
+    /* background-color: #fff; */
     border-radius: 8px;
     box-shadow: 0 0 10px #ca4f02d9;
     padding: 20px;
@@ -25,7 +25,7 @@
 
 .timestamp {
     font-size: 0.8rem;
-    color: #888;
+    color: var(--timestamp-color);
 }
 
 .comment-content {
@@ -47,7 +47,7 @@
 }
 
 button {
-    background-color: #dc3545;
+    background-color:var(--btn-background-color-secondary); ;
     color: #fff;
     border: none;
     padding: 8px 15px;
@@ -55,8 +55,4 @@ button {
     cursor: pointer;
     font-size: 0.9rem;
     transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #c82333;
 }

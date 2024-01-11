@@ -8,9 +8,8 @@ const Dashboard = () => {
   console.log(currentUser);
   return (
     <>
-      <h1>Dashboard</h1>
       <AddBlog />
-     
+
     </>
   );
 };

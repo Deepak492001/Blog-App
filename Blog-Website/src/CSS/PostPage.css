@@ -49,59 +49,10 @@
 .bookmark-icon {
     font-size: 2rem;
     cursor: pointer;
-    color: blue;
+ 
 }
 
 .separator {
     border-top: 2px solid #ccc;
     margin-bottom: 30px;
-}
-
-.comments-section {
-    width: 100%;
-}
-
-.comments-heading {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-.comments-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.comment-form {
-    width: 100%;
-    margin-bottom: 30px;
-}
-
-.form-outline {
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-input[type="text"] {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1.1rem;
-}
-
-.comment-btn {
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: blue;
-    color: white;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.comment-btn:hover {
-    background-color: #194a7a;
 }

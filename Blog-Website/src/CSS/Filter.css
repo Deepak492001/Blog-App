@@ -12,9 +12,8 @@
     border-radius: 20px;
     padding: 8px 16px;
     font-size: 16px;
-    background-color: #ff6e9c;
-    color: #fff;
-    cursor: pointer;
+    background-color:var(--filter-button-color);
+
     transition: background-color 0.3s;
 }
 

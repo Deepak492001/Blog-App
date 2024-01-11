@@ -6,7 +6,7 @@ import {
   updateByPostId,
 } from "../service/ApiPost";
 
-import sorry from "../assets/sorry.png";
+
 import PostCard from "../component/PostCard";
 import { useParams } from "react-router-dom";
 import NoPostMessages from "../component/NoPostMessages";
@@ -40,6 +40,8 @@ const MyPosts = () => {
             deletePost={deletePost}
             updateByPostId={updateByPostId}
             showButtons={true}
+            showBookMark={false}
+            showCommentBox={false}
           />
         ))
       ) : (

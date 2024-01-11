@@ -20,9 +20,9 @@ import UpdatePostPage from "./pages/UpdatePostPage";
 import ForgotPassword from "./component/ForgotPassword";
 import UpdatePassword from "./pages/UpdatePassword";
 import BookmarkedPosts from "./pages/BookmarkedPosts";
-import Newsletter from "./component/Newsletter";
+
 import { Toaster } from "react-hot-toast";
-// import ShowPostPage from "./component/ShowPostPage";
+
 
 function App() {
   const { currentUser } = useContext(UserContext);
@@ -55,7 +55,7 @@ function App() {
         </Routes>
 
         <Footer />
-         <Toaster position="top-center" reverseOrder={false} />
+        <Toaster position="top-center" reverseOrder={false} />
       </BrowserRouter>
     </>
   );

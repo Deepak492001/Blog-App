@@ -122,7 +122,7 @@ const AllPosts = () => {
             <Loader />
           ) : (
             filteredPosts.map((post) => (
-              <PostCard key={post.postId} post={post} showButtons={false} />
+              <PostCard key={post.postId} post={post} showButtons={false}  showCommentBox={true} showBookMark={true} />
             ))
           )
         ) : (

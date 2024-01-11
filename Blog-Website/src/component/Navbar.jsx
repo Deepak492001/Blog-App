@@ -66,7 +66,7 @@ const Navbar = () => {
                   className="nav-link"
                   to={`/all-my-blogs/${currentUser.data}`}
                 >
-                  YOur Posts
+                  Your Posts
                 </Link>
 
                 <Link
@@ -81,28 +81,28 @@ const Navbar = () => {
               </li> */}
               </>
             )}
-          </nav>
 
-         {LoggedIn ? (
-  <Link to="/">
-    <button className="contact-button" onClick={logOutHandler}>
-      Logout
-    </button>
-  </Link>
-) : (
-  <ul className="contact-list">
-    <li>
-      <Link to="/signin">
-        <button className="contact-button">Login</button>
-      </Link>
-    </li>
-    <li>
-      <Link to="/signup">
-        <button className="contact-button">Sign up for free</button>
-      </Link>
-    </li>
-  </ul>
-)}
+            {LoggedIn ? (
+              <Link to="/">
+                <button className="nav-button" onClick={logOutHandler}>
+                  Logout
+                </button>
+              </Link>
+            ) : (
+              <ul className="nav-list">
+                <li>
+                  <Link to="/signup">
+                    <button className="nav-button">Sign up for free</button>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/signin">
+                    <button className="nav-button">Login</button>
+                  </Link>
+                </li>
+              </ul>
+            )}
+          </nav>
 
           {/* Hamburger menu button */}
           <span
@@ -113,10 +113,9 @@ const Navbar = () => {
             {showNav ? (
               <IoClose className="menu-icon" />
             ) : (
-              <GiHamburgerMenu className="menu-icon" />
+              <GiHamburgerMenu className="menu-icon " />
             )}
           </span>
-
         </header>
       </div>
     </>

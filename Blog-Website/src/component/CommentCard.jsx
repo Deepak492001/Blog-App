@@ -26,17 +26,7 @@ const CommentCard = ({ comment, deleteComment }) => {
                 <p>{comment.content}</p>
               </div>
               <div className="comment-actions d-flex justify-content-between align-items-center">
-                {/* <div className="like-dislike">
-                  <a href="#!" className="link-muted me-2">
-                    <i className="fas fa-thumbs-up me-1"></i>132
-                  </a>
-                  <a href="#!" className="link-muted">
-                    <i className="fas fa-thumbs-down me-1"></i>15
-                  </a>
-                </div>
-                <a href="#!" className="link-muted reply">
-                  <i className="fas fa-reply me-1"></i> Reply
-                </a> */}
+        
               </div>
               {comment.userEmail === currentUser.data && (
                 <button onClick={() => deleteComment(comment.commentId)}>
