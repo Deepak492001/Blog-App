@@ -2,6 +2,7 @@
 
 /* Styles for the footer container */
 .footer-container {
+  top: 50px;
   background-color: #f8f9fa;
   padding: 40px 20px;
   font-family: "Allura", cursive;

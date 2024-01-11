@@ -21,11 +21,12 @@ const UpdatePostPage = () => {
     []
   );
 
-  const [post, setPost] = useState({
+ const [post, setPost] = useState({
     postTitle: "",
     postContent: "",
     postCategory: "",
     postUser: currentUser.data,
+    postImage: null,
   });
 
   const { postId } = useParams();
@@ -37,17 +38,27 @@ const UpdatePostPage = () => {
     console.log(value);
 
     if (value !== undefined) {
-      toast.success("Post updated successfully");
-    } else {
-      toast.error("Post Didn't  Updated");
-    }
+      toast.success("Post added successfully");
+      setPost({
+        postTitle: "",
+        postContent: "",
+        postCategory: "",
+        postImage: null,
+      });
+    } else toast.error("error occurred while updating post");
   }
 
+
   function onChangeHandler(event) {
-    const { name, value } = event.target;
-    setPost((post) => {
-      return { ...post, [name]: value };
-    });
+    const { name, value, files } = event.target;
+    if (name === "postImage") {
+      setPost((post) => ({
+        ...post,
+        postImage: files[0], // Set the postImage to the selected file
+      }));
+    } else {
+      setPost((prevPost) => ({ ...prevPost, [name]: value }));
+    }
   }
 
   useEffect(() => {
@@ -78,11 +89,12 @@ const UpdatePostPage = () => {
 
   return (
     <>
-      <form onSubmit={updatePostHandler} className="update-post-container">
-        <div className="row mb-4">
-          <div className="col">
-            <div className="form-outline">
-              <input
+      <div className="post-container">
+      <form onSubmit={updatePostHandler} className="post-form">
+        <div className="form-row">
+          <div className="form-group">
+            <label htmlFor="postTitle">Title</label>
+         <input
                 type="text"
                 id="postTitle"
                 className="form-control"
@@ -91,15 +103,11 @@ const UpdatePostPage = () => {
                 required
                 value={post.postTitle}
               />
-              <label className="form-label" htmlFor="postTitle">
-                Title
-              </label>
-            </div>
           </div>
 
-          <div className="col">
-            <div className="form-outline mb-4">
-              <select
+          <div className="form-group">
+            <label htmlFor="postCategory">Category</label>
+           <select
                 required
                 className="select"
                 onChange={onChangeHandler}
@@ -107,29 +115,36 @@ const UpdatePostPage = () => {
                 value={post.postCategory}
                 id="postCategory"
               >
-                <option disabled value="">
-                  Select an option
+              <option disabled value="">
+                Select an option
+              </option>
+              {categories.map((postCategory) => (
+                <option
+                  key={postCategory.categoryId}
+                  value={postCategory.categoryName}
+                >
+                  {postCategory.categoryName}
                 </option>
-                {categories.map((postCategory) => {
-                  return (
-                    <option
-                      key={postCategory.categoryId}
-                      value={postCategory.categoryName}
-                    >
-                      {postCategory.categoryName}
-                    </option>
-                  );
-                })}
-              </select>
-              <label className="form-label" htmlFor="postCategory">
-                Category
-              </label>
-            </div>
+              ))}
+            </select>
           </div>
+        </div>
 
-          <div className="col">
-            <div className="form-outline">
-              <JoditEditor
+        <div className="form-group">
+          <label htmlFor="postImage">Image</label>
+          <input
+            type="file"
+            id="postImage"
+            className="form-control"
+            onChange={onChangeHandler}
+            name="postImage"
+            // required
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="postContent">Content</label>
+            <JoditEditor
                 ref={editor}
                 value={post.postContent}
                 config={config}
@@ -141,19 +156,18 @@ const UpdatePostPage = () => {
                   setContent(newContent);
                 }}
               />
-              <label className="form-label" htmlFor="postContent">
-                Content
-              </label>
-            </div>
-          </div>
         </div>
 
-        <button type="submit" className="btn btn-primary mb-4">
+        <div className="button-group">
+          <button type="submit" className="btn btn-primary mb-4">
           Update Post
         </button>
-
-        <button type="reset">Reset</button>
+          <button type="reset" className="btn secondary-btn">
+            Reset
+          </button>
+        </div>
       </form>
+    </div>
     </>
   );
 };

@@ -69,7 +69,7 @@ const AddPost = () => {
   }
 
   return (
-    <div className="add-post-container">
+    <div className="post-container">
       <form onSubmit={addPostHandler} className="post-form">
         <div className="form-row">
           <div className="form-group">
