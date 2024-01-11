@@ -64,7 +64,15 @@ select {
     color: #fff;
 }
 
+.primary-btn:hover{
+    background-color: rgb(177, 5, 177);
+}
+
+
 .secondary-btn {
     background-color: #6c757d;
     color: #fff;
+}
+.secondary-btn:hover {
+    background-color: rgb(233, 154, 7);
 }
