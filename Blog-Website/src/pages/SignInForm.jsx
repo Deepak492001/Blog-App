@@ -48,7 +48,7 @@ const SignInForm = () => {
           <div className="row d-flex align-items-center justify-content-center h-100">
             <div className="col-md-8 col-lg-7 col-xl-6">
               <img
-                src={geetika}
+                // src={geetika}
                 loading="lazy"
                 style={{ width: "400px", height: "500px" }}
                 className="img-fluid"
