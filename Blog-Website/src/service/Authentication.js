@@ -1,6 +1,6 @@
 import axios from "axios";
-const BASE_URL = "http://localhost:8080";
-
+// const BASE_URL = "http://localhost:8080";
+import BASE_URL from './config';
 export const isLoggedIn = () => {
     let data=localStorage.getItem("data");
     return data === null ?  false :  true;
