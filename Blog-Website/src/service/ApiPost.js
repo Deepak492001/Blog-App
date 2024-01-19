@@ -20,7 +20,6 @@ export const addPost = async (post) => {
     // throw error;
   }
 };
-
 export const getAllPosts = async (page, size) => {
   try {
     const response = await axios.get(
@@ -29,62 +28,62 @@ export const getAllPosts = async (page, size) => {
 
     return response.data;
   } catch (error) {
-    // Handle error cases
-    console.log(error.message);
+    console.error('Error fetching posts:', error.message);
+    throw error;
   }
 };
 
-// get Single post By id
+
+
+
 export const getPostByPostId = async (postId) => {
   try {
-    return await axios.get(`${BASE_URL}/post-by-postId/${postId}`);
+    const response = await axios.get(`${BASE_URL}/post-by-postId/${postId}`);
+    return response.data;
   } catch (error) {
-    console.log(error.message);
+    console.error('Error fetching post by ID:', error.message);
+    throw error;
   }
 };
 
-// get Post By use
 export const getPostByUser = async (user) => {
   try {
-    return await axios.get(`${BASE_URL}/post-by-user/${user}`);
+    const response = await axios.get(`${BASE_URL}/post-by-user/${user}`);
+    return response.data;
   } catch (error) {
-    console.log(error.message);
+    console.error('Error fetching posts by user:', error.message);
+    throw error;
   }
 };
 
-// update post By postId
 export const updateByPostId = async (post, postId) => {
   try {
-    return axios.put(`${BASE_URL}/update-post/${postId}`, post);
+    const response = await axios.put(`${BASE_URL}/update-post/${postId}`, post);
+    return response.data;
   } catch (error) {
-    console.log(error.message);
+    console.error('Error updating post by ID:', error.message);
+    throw error;
   }
 };
-
-// delete post by id
 
 export const deletePostById = async (postId) => {
   try {
-    return await axios.delete(`${BASE_URL}/delete-post/${postId}`);
+    const response = await axios.delete(`${BASE_URL}/delete-post/${postId}`);
+    return response.data;
   } catch (error) {
-    console.log(error.message);
+    console.error('Error deleting post by ID:', error.message);
+    throw error;
   }
 };
 
-// Add post
-// export const addPost = async (post) => {
-//     try {
-//         return await axios.post(`${BASE_URL}/add-post`, post);
-//     } catch (error) {
-//         console.log(error.message);
-//     }
-// };
 
-// get post Categories
+
 export const getCategories = async () => {
   try {
-    return await axios.get(`${BASE_URL}/categories`);
+    const response = await axios.get(`${BASE_URL}/categories`);
+    return response.data;
   } catch (error) {
-    console.log(error.message);
+    console.error('Error fetching categories:', error.message);
+    throw error;
   }
 };

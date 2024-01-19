@@ -7,7 +7,7 @@
 
 
 .header-content {
-  margin-top: -40px;
+  /* margin-top: -40px; */
   /* position: relative; */
   max-width: 1280px;
   margin: 0 auto;
@@ -16,6 +16,7 @@
   align-items: center;
   padding: 1rem;
   font-weight: bolder;
+
 }
 
 .logo {
@@ -45,15 +46,18 @@
   display: flex;
   gap: 1rem;
   align-items: center;
+
   /* Center the nav links vertically */
 }
 
 .nav-link {
+
   color: black;
   font-size: 1.125rem;
   font-weight: 600;
   transform: color 0.1s;
   text-transform: capitalize;
+
 }
 
 .nav-link:active,
@@ -61,6 +65,7 @@
   color: brown;
   text-decoration: underline;
 }
+
 .nav-button {
 
   border: none;
@@ -107,19 +112,23 @@
     display: none;
     height: 0;
     flex-direction: column;
+
+
     justify-content: center;
     align-items: center;
     /* Center horizontally */
     position: absolute;
-    top: 142px;
+    top: 106px;
     left: 0;
     width: 100%;
+      /* background-color: red; */
     background-color: #fff;
-    transition: 2s ease;
+    /* transition: 1s ; */
     overflow: hidden;
   }
 
   .nav.active {
+    padding: 14px 0 14px 0;
     display: flex;
     height: auto;
     /* Change height to auto when active */
@@ -153,28 +162,30 @@
     order: 2;
   }
 
-  .nav-list {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    /* Center horizontally */
-  }
+     .nav-list {
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+       /* Center horizontally */
+     }
 
-  .nav-list li {
-    margin: 0;
-    padding: 0;
-  }
+     .nav-list li {
+       margin: 0;
+       padding: 0;
+     }
+
+     .nav-button {
+       order: 1;
+       width: 100%;
+       margin-bottom: 5px;
+     }
+
+     /* Place signup button above login button */
+     .nav-list li:first-of-type .nav-button {
+       order: 2;
+     }
 
 
-  .nav-button {
-    order: 1;
-    width: 100%;
-    margin-bottom: 5px;
-  }
-
-  .nav-list li:first-of-type .nav-button {
-    order: 2;
-  }
 
   /* New styles for positioning Logout button below nav links */
   .nav.active {
@@ -191,6 +202,7 @@
     order: 2;
   }
 }
+
 .menu-button {
   display: none;
 

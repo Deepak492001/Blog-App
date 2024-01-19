@@ -96,7 +96,7 @@
 
 .news-send-button {
     background-color: var(--primary-color);
-    color: var(--background-color);
+    /* color: var(--background-color); */
     border: none;
     border-radius: 0.25rem;
     padding: 0.5rem 1rem;

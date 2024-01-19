@@ -15,6 +15,7 @@ const AddPost = () => {
     () => ({
       readonly: false,
       placeholder: "Start typing...",
+        direction: "ltr", // Ensure left-to-right text direction
     }),
     []
   );
@@ -31,7 +32,7 @@ const AddPost = () => {
   const fetchCategories = async () => {
     try {
       const categoriesData = await getAllCategories();
-      setCategories(categoriesData.data);
+      setCategories(categoriesData);
     } catch (error) {
       console.log(error.message);
     }
@@ -138,7 +139,7 @@ const AddPost = () => {
           />
         </div>
 
-        <div className="button-group">
+    <div className="button-group" style={{ justifyContent: "center" }}>
           <button type="submit" className="btn primary-btn">
             Add Post
           </button>

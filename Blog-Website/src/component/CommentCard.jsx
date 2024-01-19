@@ -26,7 +26,7 @@ const CommentCard = ({ comment, deleteComment }) => {
                 <p>{comment.content}</p>
               </div>
               <div className="comment-actions d-flex justify-content-between align-items-center">
-        
+
               </div>
               {comment.userEmail === currentUser.data && (
                 <button onClick={() => deleteComment(comment.commentId)}>

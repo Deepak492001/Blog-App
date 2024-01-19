@@ -8,7 +8,7 @@ const MainSection = () => {
       <div className="content">
         <section className="main-section">
           <div className="content-left">
-            <p className="section-label">Very proud to introduce</p>
+            {/* <p className="section-label">Write here something</p> */}
             <h1 className="section-title">Join us on this Journey</h1>
             <p className="section-description">
               Embark on a journey where every blog post is a door to wisdom,
@@ -16,12 +16,14 @@ const MainSection = () => {
               treasure trove of cherished reads.
             </p>
             <div className="button-group">
-              <button href="#start" className="start-button">
-                Start Now
-              </button>
-              <button href="#tour" className="tour-button">
-                Take Tour
-              </button>
+              <Link to="/">
+                <button className="start-button">Start Now</button>
+              </Link>
+              <Link to="/">
+                <button  className="tour-button">
+                  Take Tour
+                </button>
+              </Link>
             </div>
           </div>
 

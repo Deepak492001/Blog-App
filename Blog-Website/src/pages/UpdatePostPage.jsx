@@ -7,7 +7,6 @@ import { getAllCategories } from "../service/ApiCategory";
 import JoditEditor from "jodit-react";
 import "../CSS/AddPost.css"; // Import the styles from AddPost.css
 
-
 const UpdatePostPage = () => {
   const { currentUser } = useContext(UserContext);
   const [categories, setCategories] = useState([]);
@@ -21,7 +20,7 @@ const UpdatePostPage = () => {
     []
   );
 
- const [post, setPost] = useState({
+  const [post, setPost] = useState({
     postTitle: "",
     postContent: "",
     postCategory: "",
@@ -48,7 +47,6 @@ const UpdatePostPage = () => {
     } else toast.error("error occurred while updating post");
   }
 
-
   function onChangeHandler(event) {
     const { name, value, files } = event.target;
     if (name === "postImage") {
@@ -68,18 +66,18 @@ const UpdatePostPage = () => {
 
   async function fetchCategories() {
     const categoryData = await getAllCategories();
-    setCategories(categoryData.data);
+    setCategories(categoryData);
   }
 
   async function fetchPostDetails(postId) {
-    return getPostByPostId(postId);
+    return await getPostByPostId(postId);
   }
 
   async function setPostDetails() {
     try {
       const postData = await fetchPostDetails(postId);
       if (postData) {
-        setPost(postData.data);
+        setPost(postData);
       }
     } catch (error) {
       toast.error("Sorry, Some Error Occurred while Fetching Data");
@@ -90,11 +88,11 @@ const UpdatePostPage = () => {
   return (
     <>
       <div className="post-container">
-      <form onSubmit={updatePostHandler} className="post-form">
-        <div className="form-row">
-          <div className="form-group">
-            <label htmlFor="postTitle">Title</label>
-         <input
+        <form onSubmit={updatePostHandler} className="post-form">
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="postTitle">Title</label>
+              <input
                 type="text"
                 id="postTitle"
                 className="form-control"
@@ -103,11 +101,11 @@ const UpdatePostPage = () => {
                 required
                 value={post.postTitle}
               />
-          </div>
+            </div>
 
-          <div className="form-group">
-            <label htmlFor="postCategory">Category</label>
-           <select
+            <div className="form-group">
+              <label htmlFor="postCategory">Category</label>
+              <select
                 required
                 className="select"
                 onChange={onChangeHandler}
@@ -115,59 +113,53 @@ const UpdatePostPage = () => {
                 value={post.postCategory}
                 id="postCategory"
               >
-              <option disabled value="">
-                Select an option
-              </option>
-              {categories.map((postCategory) => (
-                <option
-                  key={postCategory.categoryId}
-                  value={postCategory.categoryName}
-                >
-                  {postCategory.categoryName}
+                <option disabled value="">
+                  Select an option
                 </option>
-              ))}
-            </select>
+                {categories.map((postCategory) => (
+                  <option
+                    key={postCategory.categoryId}
+                    value={postCategory.categoryName}
+                  >
+                    {postCategory.categoryName}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
-        </div>
 
-        <div className="form-group">
-          <label htmlFor="postImage">Image</label>
-          <input
-            type="file"
-            id="postImage"
-            className="form-control"
-            onChange={onChangeHandler}
-            name="postImage"
-            // required
-          />
-        </div>
+          <div className="form-group">
+            <label htmlFor="postImage">Image</label>
+            <input
+              type="file"
+              id="postImage"
+              className="form-control"
+              onChange={onChangeHandler}
+              name="postImage"
+              // required
+            />
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="postContent">Content</label>
-            <JoditEditor
-                ref={editor}
-                value={post.postContent}
-                config={config}
-                onChange={(newContent) => {
-                  setPost((prevPost) => ({
-                    ...prevPost,
-                    postContent: newContent,
-                  }));
-                  setContent(newContent);
-                }}
-              />
-        </div>
+          <div className="form-group">
+            <label htmlFor="postContent">Content</label>
+   <JoditEditor
+  ref={editor}
+  value={post.postContent}
+  config={config}
+  onChange={(newContent) => {
+    setContent(newContent);
+  }}
+/>
 
-        <div className="button-group">
-          <button type="submit" className="btn btn-primary mb-4">
-          Update Post
-        </button>
-          <button type="reset" className="btn secondary-btn">
-            Reset
-          </button>
-        </div>
-      </form>
-    </div>
+          </div>
+
+          <div className="button-group" style={{ justifyContent: "center" }}>
+            <button type="submit" className="btn primary-btn">
+              Update Post
+            </button>
+          </div>
+        </form>
+      </div>
     </>
   );
 };

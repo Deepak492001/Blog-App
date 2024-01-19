@@ -1,15 +1,17 @@
+/* footer */
 /* Footer.css */
 
 /* Styles for the footer container */
 .footer-container {
-  top: 50px;
+  top: 60px;
   background-color: #f8f9fa;
+  position: relative;
   padding: 40px 20px;
   font-family: "Allura", cursive;
   color: #333;
   /* font-family: 'Allura', cursive;
-        font-family: 'Poppins', sans-serif;
-        font-family: 'Roboto', sans-serif; */
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif; */
 }
 
 /* Styles for the top section of the footer */
@@ -20,7 +22,6 @@
   text-align: center;
   margin-bottom: 30px;
 }
-
 
 /* Styles for the social icons */
 .social {
@@ -44,7 +45,7 @@
 }
 
 /* Instagram icon color */
-.instagram{
+.instagram {
   fill: #e4405f;
   /* Replace with your desired color */
 }
@@ -60,12 +61,13 @@
   fill: #1da1f2;
   /* Replace with your desired color */
 }
+
 /* Styles for the footer grid */
 .footer-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -105,49 +107,32 @@
   margin-top: 30px;
 }
 
-@media screen and (min-width: 1024px) {
+/* Media queries for responsiveness */
+@media screen and (max-width: 480px) {
+
+  /* Adjustments for iPhone screens and smaller devices */
   .footer-container {
-    width: 100vw;
-    left: 50%;
-    position: relative;
-    transform: translateX(-50%);
-    padding-left: calc((100% - 80%) / 2);
-    padding-right: calc((100% - 80%) / 2);
-    max-width: 100%;
+    padding: 20px 15px;
   }
-}
 
-/* Additional styles for smaller screens */
-@media screen and (max-width: 850px) {
-  /* Adjustments for smaller screens */
   .footer-grid {
-    width: 90%;
-    margin: 0 auto;
+    grid-template-columns: 1fr;
   }
-}
 
+  .footer-grid-column {
+    margin-bottom: 20px;
+  }
 
-.logo-link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.8rem;
-  font-size: 1.28rem;
-  font-weight: bold;
-  color: black;
-}
+  .social-icon {
+    width: 25px;
+    height: 25px;
+  }
 
-.social-icon {
-  width: 1.5rem;
-  height: 1.5rem;
-}
+  .logo-link {
+    font-size: 1.1rem;
+  }
 
-.filler-text {
-  font-size: 1rem;
-  color: #777;
-}
-
-.social {
-  display: flex;
-  gap: 0.8rem;
+  .filler-text {
+    font-size: 0.9rem;
+  }
 }

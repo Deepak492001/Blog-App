@@ -4,7 +4,8 @@ import BASE_URL from './config';
 
 export const addComment = async (comment) => {
   try {
-    return await axios.post(`${BASE_URL}/add-comment`, comment);
+    const response = await axios.post(`${BASE_URL}/add-comment`, comment);
+    return response.data;
   } catch (error) {
     console.log(error.message);
   }
@@ -12,7 +13,8 @@ export const addComment = async (comment) => {
 
 export const getAllCommentsByPostId = async (postId) => {
   try {
-    return await axios.get(`${BASE_URL}/all-comments/${postId}`);
+    const response = await axios.get(`${BASE_URL}/all-comments/${postId}`);
+    return response.data;
   } catch (error) {
     console.log(error.message);
   }
@@ -20,7 +22,8 @@ export const getAllCommentsByPostId = async (postId) => {
 
 export const deleteCommentByCommentId = async (commentId) => {
   try {
-    return await axios.delete(`${BASE_URL}/delete-comment/${commentId}`);
+    const response = await axios.delete(`${BASE_URL}/delete-comment/${commentId}`);
+    return response.data;
   } catch (error) {
     console.log(error.message);
   }

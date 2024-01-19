@@ -3,7 +3,8 @@ import BASE_URL from './config';
 
 export const getAllCategories = async () => {
     try {
-        return await axios.get(`${BASE_URL}/all-categories`);
+        const response = await axios.get(`${BASE_URL}/all-categories`);
+        return response.data;
     } catch (error) {
 console.log(error.message);
     }

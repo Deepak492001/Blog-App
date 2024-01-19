@@ -35,13 +35,10 @@ body {
 li {
   list-style-type: none;
 }
-button {
-  transition: 0.4s ease;
-  color: var(--btn-text-color);
-  cursor: pointer;
-}
+
 button:hover {
   scale: 1.05;
+
 }
 
 button:active {

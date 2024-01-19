@@ -48,13 +48,14 @@ const PostPage = ({ showCommentBox, showBookMark }) => {
   // Fetch post data by post ID
   async function fetchPostData() {
     const data = await getPostByPostId(postId);
-    setPostData(data.data);
+
+    setPostData(data);
   }
 
   // Fetch comments for the post
   async function fetchPostComments() {
     const commentData = await getAllCommentsByPostId(postId);
-    setAllComments(commentData.data);
+    setAllComments(commentData);
   }
 
   // Handler for adding/deleting bookmarks

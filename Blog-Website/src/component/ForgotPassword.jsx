@@ -5,10 +5,11 @@ import {
   sendOtpMailToUser,
   setOtpOnLocalStorage,
 } from "../service/ApiOtp";
-import { toast, Toaster } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { ForgotPasswordContext } from "../context/ForgotPasswordContext";
-
+import "../CSS/ForgotPassword.css"
+import forgot_password_img  from "../assets/forgot_password.svg";
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
@@ -49,14 +50,15 @@ const ForgotPassword = () => {
     <>
       <div className="container">
         {/* ... */}
+
+        <img src={forgot_password_img} alt="forgot_img"  className="img-fluid" loading="lazy" />
         <div className="panel-body">
           <div className="text-center">
             {/* ... */}
             <form
-              id="email-form"
-              role="form"
-              autoComplete="off"
+
               className="form"
+
               onSubmit={onSubmitHandler}
             >
               <div className="form-group">
@@ -72,15 +74,16 @@ const ForgotPassword = () => {
                 />
               </div>
               <div className="form-group">
-                <button type="submit">Enter Email</button>
+                <button type="submit" className="btn">Enter Email</button>
               </div>
+
+
+
             </form>
             {/* OTP Section */}
             {userOtp !== "" && (
               <form
-                id="otp-form"
-                role="form"
-                autoComplete="off"
+
                 className="form"
                 onSubmit={otpHandler}
               >
@@ -97,7 +100,7 @@ const ForgotPassword = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <button type="submit">Enter OTP</button>
+                  <button type="submit" className="btn">Enter OTP</button>
                 </div>
               </form>
             )}

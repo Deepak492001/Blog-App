@@ -22,6 +22,7 @@ import UpdatePassword from "./pages/UpdatePassword";
 import BookmarkedPosts from "./pages/BookmarkedPosts";
 
 import { Toaster } from "react-hot-toast";
+import Loader from "./component/Loader";
 
 
 function App() {
@@ -53,7 +54,7 @@ function App() {
           />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
-
+{/* <Loader/> */}
         <Footer />
         <Toaster position="top-center" reverseOrder={false} />
       </BrowserRouter>

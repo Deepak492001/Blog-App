@@ -8,7 +8,7 @@ const Filter = ({ setCategory }) => {
 
   async function fetchAllCategories() {
     const categoryData = await getAllCategories();
-    setFilters(categoryData.data);
+    setFilters(categoryData);
   }
 
   useEffect(() => {

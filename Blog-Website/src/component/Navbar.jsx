@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { doLogout, isLoggedIn } from "../service/Authentication";
 import logo from "../assets/logo.png";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { Toaster } from "react-hot-toast";
+
 import { UserContext } from "../context/UserContext";
 import "../CSS/Nav.css";
 import { IoClose } from "react-icons/io5";
@@ -36,17 +36,12 @@ const Navbar = () => {
   };
   return (
     <>
-      {/* --------------------------------------------------------------------------------------------------- */}
-      {/* <!-- Navbar --> */}
-
-      {/* <!-- Navbar --> */}
-      {/* -------------------------------------------------------------------------- */}
 
       <div className="header">
         <header className="header-content">
           <Link to="/" className="logo">
             <img src={logo} alt="logoImage" className="logo-icon" />
-            <span className="logo-text">StudySync</span>
+            <span className="logo-text">Blogify</span>
           </Link>
 
           <nav className={`nav ${showNav ? "active" : ""}`}>

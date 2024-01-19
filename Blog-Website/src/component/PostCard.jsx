@@ -3,16 +3,11 @@ import { Link } from "react-router-dom";
 import "../CSS/PostCard.css";
 import { MdDelete, MdSystemUpdateAlt } from "react-icons/md";
 
-import geetika from "../assets/geetika.png";
+// import geetika from "../assets/geetika.png";
 
-
-
-
-
-const PostCard = ({ post, deletePost, showButtons, bookMarkedPostIds }) => {
+const PostCard = ({ post, deletePost, showButtons,showCommentBox,showBookmark }) => {
   const [readMore, setReadMore] = useState(false);
- const [image, setImage] = useState(null);
-
+  const [image, setImage] = useState(null);
 
   const description = readMore
     ? post.postContent
@@ -24,8 +19,7 @@ const PostCard = ({ post, deletePost, showButtons, bookMarkedPostIds }) => {
 
   return (
     <div className="card">
-  
-        {post.postImage && (
+      {post.postImage && (
         <img
           src={`data:image/png;base64, ${post.postImage}`} // Adjust the format according to the actual image type
           alt="Post"

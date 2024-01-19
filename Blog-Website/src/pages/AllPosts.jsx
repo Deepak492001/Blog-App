@@ -13,7 +13,7 @@ import NoPostMessages from "../component/NoPostMessages";
 
 const AllPosts = () => {
   // State variables initialization
-  const [posts, setPosts] = useState([]); // Holds all posts
+  const [totalPosts, setTotalPosts] = useState([]); // Holds all posts
   const [filteredPosts, setFilteredPosts] = useState([]); // Holds filtered posts
   const [category, setCategory] = useState("ALL"); // Holds the selected category
   const [searchQuery, setSearchQuery] = useState(""); // Holds the search query
@@ -49,16 +49,34 @@ const AllPosts = () => {
   }, [page]);
 
   // Fetch all posts from the API and initialize states
+  // Fetch all posts from the API and initialize states
   async function fetchAllPosts() {
     setLoading(true);
+
     try {
-      const allPosts = await getAllPosts(page, 1);
+      const allPosts = await getAllPosts(page, 5);
       console.log(allPosts);
-      setPosts(allPosts);
-      setFilteredPosts(allPosts); // Set filtered posts initially to all posts
+
+      // Set totalPosts state for the initial load
+      if (page === 1) {
+        setTotalPosts(allPosts);
+      } else {
+        // Concatenate new posts with existing totalPosts
+        setTotalPosts((prevTotalPosts) => [...prevTotalPosts, ...allPosts]);
+      }
+
+      // Set filtered posts initially to totalPosts
+      setFilteredPosts(totalPosts);
+
+      // Check if there are more posts to load
+      setHasMore(allPosts.length === 5);
+
+      // Delay the loading state change to false by 2 seconds
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
     } catch (error) {
       toast.error("Error occurred while fetching posts");
-    } finally {
       setLoading(false);
     }
   }
@@ -66,16 +84,18 @@ const AllPosts = () => {
   // Filter posts based on category whenever category changes
   useEffect(() => {
     if (category === "ALL") {
-      setFilteredPosts(posts); // Set filtered posts based on category
+      setFilteredPosts(totalPosts); // Set filtered posts based on category
     } else {
-      setFilteredPosts(posts.filter((post) => post.postCategory === category));
+      setFilteredPosts(
+        totalPosts.filter((post) => post.postCategory === category)
+      );
     }
-  }, [category, posts]);
+  }, [category, totalPosts]);
 
   // Filter posts based on search query and/or category whenever searchQuery or category changes
   useEffect(() => {
     setLoading(true);
-    let filteredPostsData = posts;
+    let filteredPostsData = totalPosts;
 
     if (searchQuery.trim() !== "") {
       filteredPostsData = filteredPostsData.filter(
@@ -93,7 +113,7 @@ const AllPosts = () => {
 
     setFilteredPosts(filteredPostsData);
     setLoading(false);
-  }, [searchQuery, category, posts]);
+  }, [searchQuery, category, totalPosts]);
 
   // Function to load more posts when reaching the bottom
   const loadMorePosts = () => {
@@ -107,7 +127,7 @@ const AllPosts = () => {
       <SearchPost setSearchQuery={setSearchQuery} />
 
       <InfiniteScroll
-        dataLength={filteredPosts.length}
+        dataLength={totalPosts.length}
         endMessage={
           <p style={{ textAlign: "center" }}>
             <b>Yay! You have seen it all</b>
@@ -117,20 +137,24 @@ const AllPosts = () => {
         hasMore={hasMore}
         loader={<Loader />}
       >
-        {posts.length > 0 ? (
+        {totalPosts.length > 0 ? (
           loading ? (
             <Loader />
           ) : (
             filteredPosts.map((post) => (
-              <PostCard key={post.postId} post={post} showButtons={false}  showCommentBox={true} showBookMark={true} />
+              <PostCard
+                key={post.postId}
+                post={post}
+                showButtons={false}
+                showCommentBox={true}
+                showBookMark={true}
+              />
             ))
           )
         ) : (
           // Show a message when there are no bookmarked posts
           <NoPostMessages />
         )}
-
-        {}
       </InfiniteScroll>
     </>
   );

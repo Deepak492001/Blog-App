@@ -1,9 +1,7 @@
 import React, { useContext, useState } from "react";
-import { toast, Toaster } from "react-hot-toast";
+import { toast } from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 
-import geetika from "../assets/geetika.png";
-// import { doLogin, doLogout } from "../service/Authentication";
-import { Link, Navigate, useNavigate } from "react-router-dom";
 import { doLogin, validateUser } from "../service/Authentication";
 import { UserContext } from "../context/UserContext";
 
@@ -12,15 +10,13 @@ const SignInForm = () => {
     email: "",
     password: "",
   });
-  let navigate = useNavigate();
-  const { currentUser, setCurrentUser } = useContext(UserContext);
+  const navigate = useNavigate();
+  const { setCurrentUser } = useContext(UserContext);
 
   async function onSubmitHandler(event) {
     event.preventDefault();
-    console.log(user);
 
     const message = await validateUser(user);
-    console.log("message", message);
 
     if (message.startsWith("Welcome")) {
       setCurrentUser({
@@ -35,84 +31,67 @@ const SignInForm = () => {
       toast.error(message);
     }
   }
+
   function onChangeHandler(event) {
     const { name, value } = event.target;
     setUser((user) => {
       return { ...user, [name]: value.trim() };
     });
   }
+
   return (
     <>
       <section className="vh-100">
-        <div className="container py-5 h-100">
-          <div className="row d-flex align-items-center justify-content-center h-100">
-            <div className="col-md-8 col-lg-7 col-xl-6">
-              <img
-                // src={geetika}
-                loading="lazy"
-                style={{ width: "400px", height: "500px" }}
-                className="img-fluid"
-                alt="image"
-              />
-            </div>
-            <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-              <form onSubmit={onSubmitHandler}>
-                {/* <!-- Email input --> */}
-                <div className="form-outline mb-4">
+        <div className="container h-100">
+          <div className="row justify-content-center align-items-center h-100">
+            <div className="col-md-7 col-lg-5">
+              <form onSubmit={onSubmitHandler} className="p-4 border rounded bg-white">
+                <h1 className="h3 mb-3 fw-normal text-center">Sign In</h1>
+
+                <div className="form-floating mb-3">
                   <input
                     type="email"
                     id="email"
                     name="email"
                     value={user.email}
-                    className="form-control form-control-lg"
+                    className="form-control"
                     onChange={onChangeHandler}
+                    placeholder="Email address"
                     required={true}
                   />
-                  <label className="form-label" htmlFor="email">
-                    Email address
-                  </label>
+                  <label htmlFor="email">Email address</label>
                 </div>
 
-                {/* <!-- Password input --> */}
-                <div className="form-outline mb-4">
+                <div className="form-floating mb-3">
                   <input
                     type="password"
                     id="password"
                     name="password"
-                    className="form-control form-control-lg"
+                    className="form-control"
                     onChange={onChangeHandler}
+                    placeholder="Password"
                     required={true}
                   />
-                  <label className="form-label" htmlFor="form1Example23">
-                    Password
-                  </label>
+                  <label htmlFor="password">Password</label>
                 </div>
 
-                <div className="d-flex justify-content-around align-items-center mb-4">
+                <div className="d-flex justify-content-between align-items-center mb-3">
                   <Link to="/forgot-password">Forgot password?</Link>
+                  {/* You can add Forgot Password link or any other link here */}
                 </div>
 
-                {/* <!-- Submit button --> */}
-                <button
-                  type="submit"
-                  className="btn btn-primary btn-lg btn-block"
-                >
+                <button type="submit" className="btn btn-primary btn-lg">
                   Sign in
                 </button>
 
-                {/* <!-- Reset button --> */}
-                <button
-                  type="reset"
-                  className="btn btn-primary btn-lg btn-block"
-                >
+                <button type="reset" className="btn btn-secondary btn-lg">
                   Reset
                 </button>
-
               </form>
             </div>
           </div>
         </div>
-        {/* <Toaster position="top-center" reverseOrder={false} /> */}
+
       </section>
     </>
   );

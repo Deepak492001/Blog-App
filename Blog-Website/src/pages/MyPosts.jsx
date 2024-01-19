@@ -6,7 +6,7 @@ import {
   updateByPostId,
 } from "../service/ApiPost";
 
-
+import {toast} from "react-hot-toast"
 import PostCard from "../component/PostCard";
 import { useParams } from "react-router-dom";
 import NoPostMessages from "../component/NoPostMessages";
@@ -15,8 +15,14 @@ const MyPosts = () => {
   const [posts, setPosts] = useState([]);
   const { user } = useParams();
   async function fetchMyPosts() {
+
     const postData = await getPostByUser(user);
-    setPosts(postData.data);
+    if (postData !== undefined) {
+      setPosts(postData);
+    } else {
+      toast.error(postData);
+    }
+
   }
   useEffect(() => {
     fetchMyPosts();

@@ -1,15 +1,16 @@
 import React, { useContext, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import { updatePassword } from "../service/ApiUser";
 import { ForgotPasswordContext } from "../context/ForgotPasswordContext";
+import update_password from "../assets/update_password.svg";
+import "../CSS/UpdatePassword.css"; // Import your UpdatePassword.css file
 
 const UpdatePassword = () => {
-  // const [passwordHolder]
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  // const { userEmail } = useParams();
   const { userEmail, setUserEmail } = useContext(ForgotPasswordContext);
+
   async function passwordHandler(event) {
     event.preventDefault();
 
@@ -35,67 +36,62 @@ const UpdatePassword = () => {
   }
 
   return (
-    <>
-      <div className="container">
-        <div className="row">
-          <div className="col-md-4 col-md-offset-4">
-            <div className="panel panel-default">
-              <div className="panel-body">
-                <div className="text-center">
-                  <h3>
-                    <i className="fa fa-lock fa-4x"></i>
-                  </h3>
-                  <h2 className="text-center">Forgot Password?</h2>
-                  <p>You can reset your password here.</p>
-                  <div className="panel-body">
-                    <form
-                      onSubmit={passwordHandler}
-                      id="register-form"
-                      role="form"
-                      autoComplete="off"
-                      className="form"
-                    >
-                      <div className="form-group">
-                        <div className="input-group">
-                          <span className="input-group-addon"></span>
-                          <input
-                            name="password"
-                            placeholder="enter your password"
-                            className="form-control"
-                            type="text"
-                            required
-                            value={newPassword}
-                            onChange={(e) => setNewPassword(e.target.value)}
-                          />
-                        </div>
+    <div className="container">
+      <img src={update_password} alt="update_img" loading="lazy" />
+      <div className="row">
+        <div className="col-md-6 offset-md-3">
+          <div className="panel">
+            <div className="panel-body">
+              <div className="text-center">
+                <h3>
+                  <i className="fa fa-lock fa-4x"></i>
+                </h3>
+                <h2 className="text-center">Update Password?</h2>
+                <p>You can reset your password here.</p>
+                <div className="panel-body">
+                  <form
+                    onSubmit={passwordHandler}
+                    id="register-form"
+                    role="form"
+                    autoComplete="off"
+                    className="form"
+                  >
+                    <div className="form-group">
+                      <input
+                        name="password"
+                        placeholder="Enter your password"
+                        className="form-control"
+                        type="password"
+                        required
+                        value={newPassword}
+                        onChange={(e) => setNewPassword(e.target.value)}
+                      />
+                    </div>
 
-                        <div className="input-group">
-                          <span className="input-group-addon"></span>
-                          <input
-                            id="email"
-                            name="confirmPassword"
-                            placeholder="confirm password"
-                            className="form-control"
-                            type="text"
-                            required
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                          />
-                        </div>
-                      </div>
-                      <div className="form-group">
-                        <button type="submit">Update Password</button>
-                      </div>
-                    </form>
-                  </div>
+                    <div className="form-group">
+                      <input
+                        id="email"
+                        name="confirmPassword"
+                        placeholder="Confirm password"
+                        className="form-control"
+                        type="password"
+                        required
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                      />
+                    </div>
+
+                    <div className="form-group">
+                      <button type="submit" className="btn" >Update Password</button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-   
-    </>
+    </div>
   );
 };
 
