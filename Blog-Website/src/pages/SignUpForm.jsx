@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { toast } from "react-hot-toast";
 import { addUser, checkUserExistsByEmail } from "../service/ApiUser";
 import { Link, useNavigate } from "react-router-dom";
-
+import "../CSS/form.css";
 const SignUpForm = () => {
   const [user, setUser] = useState({
     name: "",
@@ -41,76 +41,80 @@ const SignUpForm = () => {
   }
 
   return (
-    <section className="vh-100">
-      <div className="container py-5 h-100">
-        <div className="row d-flex align-items-center justify-content-center h-100">
-          <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-            <form onSubmit={onSubmitHandler} className="p-4 border rounded bg-white">
-              <h1 className="h3 mb-3 fw-normal text-center">Sign Up</h1>
+    <div className="form-container">
+      <form onSubmit={onSubmitHandler} className="form">
+        <h1 className="title">Sign up</h1>
 
-              <div className="form-floating mb-4">
-                <input
-                  type="name"
-                  name="name"
-                  id="name"
-                  required={true}
-                  value={user.name}
-                  onChange={onChangeHandler}
-                  className="form-control"
-                />
-                <label htmlFor="name">Name</label>
-              </div>
+        <div className="inputContainer">
+          <input
+            type="text"
+            name="name"
+            id="name"
+            required={true}
+            value={user.name}
+            onChange={onChangeHandler}
+              placeholder="Your Name"
+            className="input"
+          />
 
-              <div className="form-floating mb-4">
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required={true}
-                  className="form-control"
-                  onChange={onChangeHandler}
-                />
-                <label htmlFor="email">Email address</label>
-              </div>
-
-              <div className="form-floating mb-4">
-                <input
-                  type="password"
-                  id="password"
-                  required={true}
-                  name="password"
-                  minLength={8}
-                  className="form-control"
-                  onChange={onChangeHandler}
-                />
-                <label htmlFor="password">Password</label>
-              </div>
-
-              <div className="form-floating mb-4">
-                <input
-                  type="password"
-                  required={true}
-                  minLength={8}
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  className="form-control"
-                  onChange={onChangeHandler}
-                />
-                <label htmlFor="confirmPassword">Confirm Password</label>
-              </div>
-
-              <button type="submit" className="btn btn-primary btn-lg btn-block">
-                Sign Up
-              </button>
-
-              <button type="reset" className="btn btn-secondary btn-lg btn-block">
-                Reset
-              </button>
-            </form>
-          </div>
+          <label htmlFor="name" className="label">
+            Name
+          </label>
         </div>
-      </div>
-    </section>
+
+        <div className="inputContainer">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required={true}
+            className="input"
+            onChange={onChangeHandler}
+              placeholder="Email address"
+          />
+
+          <label htmlFor="email" className="label">
+            Email
+          </label>
+        </div>
+
+        <div className="inputContainer">
+          <input
+            type="password"
+            id="password"
+            required={true}
+            name="password"
+            minLength={8}
+            className="input"
+            onChange={onChangeHandler}
+              placeholder="Password"
+          />
+
+          <label htmlFor="password" className="label">
+            Password
+          </label>
+        </div>
+
+        <div className="inputContainer">
+          <input
+            type="password"
+            required={true}
+            minLength={8}
+            id="confirmPassword"
+            name="confirmPassword"
+            className="input"
+            onChange={onChangeHandler}
+              placeholder="Confirm Password"
+          />
+
+          <label htmlFor="confirmPassword" className="label">
+            Confirm Password
+          </label>
+        </div>
+
+        <input type="submit" className="submitBtn" value="Sign up" />
+      </form>
+    </div>
   );
 };
 
